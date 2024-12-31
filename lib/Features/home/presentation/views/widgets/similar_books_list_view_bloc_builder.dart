@@ -1,7 +1,6 @@
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
 import 'package:bookly/Features/home/presentation/manger/newset_books_cubit/newest_books_cubit.dart';
 import 'package:bookly/Features/home/presentation/views/widgets/similar_books_list_view.dart';
-import 'package:bookly/core/utils/functions/build_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,9 +26,7 @@ class _FeatuedBooksListViewBlocBuilderState
           books.addAll(state.books);
         }
 
-        if (state is NewestBooksPaginationFailure) {
-
-        }
+        if (state is NewestBooksPaginationFailure) {}
       },
       builder: (context, state) {
         if (state is NewestBooksSuccess) {
@@ -39,6 +36,9 @@ class _FeatuedBooksListViewBlocBuilderState
         } else if (state is NewestBooksFailure) {
           return Text(state.errMessage);
         }
+        // else {
+        //   return const CircularProgressIndicator();
+        // }
         return SimilarBooksListview(
           books: books,
         );

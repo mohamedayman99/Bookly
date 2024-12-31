@@ -14,8 +14,8 @@ class SimilarBooksListview extends StatefulWidget {
 class _SimilarBooksListviewState extends State<SimilarBooksListview> {
   late final ScrollController _scrollController;
 
-  int nextPage = 1;
-  var isLoading = false;
+  int nextPage = 1 ;
+  var isLoading = false ;
 
   @override
   void initState() {

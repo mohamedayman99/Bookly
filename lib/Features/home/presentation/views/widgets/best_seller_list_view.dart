@@ -7,7 +7,7 @@ import 'best_seller_list_view_item.dart';
 class BestSellerListView extends StatefulWidget {
   const BestSellerListView({super.key, required this.books});
 
-  final List<BookEntity> books;
+  final List<BookEntity> books ;
 
   @override
   State<BestSellerListView> createState() => _BestSellerListViewState();
@@ -46,6 +46,7 @@ class _BestSellerListViewState extends State<BestSellerListView> {
     _scrollController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -56,11 +57,9 @@ class _BestSellerListViewState extends State<BestSellerListView> {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: BookListViewItem(
-            image: widget.books[index].image,
+            image: widget.books[index].image ?? "https://via.placeholder.com/150",
             title: widget.books[index].authorName.toString(),
-            // description: widget.books[index].authorName.toString(),
             price: widget.books[index].price.toString(),
-
           ),
         );
       },
