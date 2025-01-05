@@ -11,7 +11,7 @@ class FetchSimilarBooksUseCase extends UseCase<List<BookEntity>, int> {
 
   @override
   Future<Either<Failure, List<BookEntity>>> call([int param = 0]) async {
-    return await homeRepo.fetchNewestBooks(
+    return await homeRepo.fetchSimilarBooks(
       pageNumber: param,
     );
   }
