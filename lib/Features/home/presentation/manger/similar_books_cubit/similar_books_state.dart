@@ -7,7 +7,9 @@ final class SimilarBooksInitial extends SimilarBooksState {}
 
 class SimilarBooksLoading extends SimilarBooksState {}
 
-class SimilarBooksPaginationLoading extends SimilarBooksState {}
+class SimilarBooksPaginationLoading extends SimilarBooksState {
+
+}
 
 class SimilarBooksPaginationFailure extends SimilarBooksState {
   final String errMessage;

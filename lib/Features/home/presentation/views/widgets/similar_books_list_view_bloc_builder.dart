@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SimilarListViewBlocBuilder extends StatefulWidget {
-  const SimilarListViewBlocBuilder({
-    super.key,
-  });
+  const SimilarListViewBlocBuilder({super.key});
 
   @override
   State<SimilarListViewBlocBuilder> createState() =>
@@ -17,7 +15,11 @@ class SimilarListViewBlocBuilder extends StatefulWidget {
 class _FeatuedBooksListViewBlocBuilderState
     extends State<SimilarListViewBlocBuilder> {
   List<BookEntity> books = [];
-
+  @override
+  void initState() {
+    super.initState();
+    context.read<SimilarBooksCubit>().fetchSimilarBooks();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SimilarBooksCubit, SimilarBooksState>(

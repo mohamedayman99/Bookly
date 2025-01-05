@@ -7,7 +7,7 @@ import '../../Features/Splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';
-  static const kBookDetailsView = '/bookDetailsView';
+  static const kBookDetailsView = '/bookDetailsView/:image';
   static const kSearchView = '/searchView';
 
   static final router = GoRouter(
@@ -25,8 +25,12 @@ abstract class AppRouter {
         builder: (context, state) => const HomeView(),
       ),
       GoRoute(
-        path: kBookDetailsView,
-        builder: (context, state) =>  const BookDetailsView(),
+        path: '/bookDetailsView/:image',
+        builder: (context, state) {
+          final String encodedImage = state.pathParameters['image']!;
+          final String image = Uri.decodeComponent(encodedImage);
+          return BookDetailsView(image: image);
+        },
       ),
     ],
   );

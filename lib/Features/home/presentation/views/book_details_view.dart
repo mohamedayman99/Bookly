@@ -2,13 +2,14 @@ import 'package:bookly/Features/home/presentation/views/widgets/book_details_vie
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+  const BookDetailsView({super.key, required this.image});
+  final String image ;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: SafeArea(
-        child: BookDetailsViewBody(),
+        child: BookDetailsViewBody(image: image,),
       ),
     );
   }
