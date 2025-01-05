@@ -1,5 +1,5 @@
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
-import 'package:bookly/Features/home/presentation/manger/newset_books_cubit/newest_books_cubit.dart';
+import 'package:bookly/Features/home/presentation/manger/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly/Features/home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,28 +20,26 @@ class _FeatuedBooksListViewBlocBuilderState
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NewestBooksCubit, NewestBooksState>(
+    return BlocConsumer<SimilarBooksCubit, SimilarBooksState>(
       listener: (context, state) {
-        if (state is NewestBooksSuccess) {
+        if (state is SimilarBooksSuccess) {
           books.addAll(state.books);
         }
 
-        if (state is NewestBooksPaginationFailure) {}
+        if (state is SimilarBooksPaginationFailure) {}
       },
       builder: (context, state) {
-        if (state is NewestBooksSuccess) {
+        if (state is SimilarBooksSuccess ||
+            state is SimilarBooksPaginationLoading ||
+            state is SimilarBooksPaginationFailure) {
           return SimilarBooksListview(
-            books: state.books,
+            books: books,
           );
-        } else if (state is NewestBooksFailure) {
+        } else if (state is SimilarBooksFailure) {
           return Text(state.errMessage);
+        } else {
+          return const CircularProgressIndicator();
         }
-        // else {
-        //   return const CircularProgressIndicator();
-        // }
-        return SimilarBooksListview(
-          books: books,
-        );
       },
     );
   }

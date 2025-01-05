@@ -7,16 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-   BookListViewItem(
-      {super.key, this.image, this.title, this.price, this.description});
+  const BookListViewItem(
+      {super.key,
+      this.image,
+      this.authorName,
+      this.price,
+      this.description,
+      this.rate});
 
-  var image;
-
-  var title;
-
-  String? price;
-
-  String? description;
+  final String? image;
+  final String? authorName;
+  final num? rate;
+  final String? price;
+  final String? description;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class BookListViewItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: CustomBookImage(
-                image: image,
+                image: image ?? "",
               ),
             ),
             const SizedBox(
@@ -44,7 +47,7 @@ class BookListViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
-                      title ?? "",
+                      authorName ?? "",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20.copyWith(
@@ -71,7 +74,7 @@ class BookListViewItem extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      const BookRating(),
+                      BookRating(rate: rate),
                     ],
                   ),
                 ],

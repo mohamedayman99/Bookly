@@ -1,5 +1,5 @@
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
-import 'package:bookly/Features/home/presentation/manger/newset_books_cubit/newest_books_cubit.dart';
+import 'package:bookly/Features/home/presentation/manger/similar_books_cubit/similar_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'custom_book_item.dart';
@@ -32,8 +32,8 @@ class _SimilarBooksListviewState extends State<SimilarBooksListview> {
     if (currentPositions >= 0.7 * maxScrollLength) {
       if (!isLoading) {
         isLoading = true;
-        await BlocProvider.of<NewestBooksCubit>(context)
-            .fetchNewestBooks(pageNumber: nextPage++);
+        await BlocProvider.of<SimilarBooksCubit>(context)
+            .fetchSimilarBooks(pageNumber: nextPage++);
         isLoading = false;
       }
     }

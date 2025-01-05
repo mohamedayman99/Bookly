@@ -70,7 +70,7 @@ class VolumeInfo {
         categories: (json['categories'] as List<dynamic>?)
             ?.map((category) => category.toString())
             .toList(),
-        averageRating: json['averageRating'] as num?,
+        averageRating: json['averageRating'] as num? ??0.0,
         ratingsCount: json['ratingsCount'] as num?,
         maturityRating: json['maturityRating'] as String?,
         allowAnonLogging: json['allowAnonLogging'] as bool?,
