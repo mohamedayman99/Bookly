@@ -7,11 +7,11 @@ class FeaturedBooksListViewLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomFadingWidget(
+    return CustomFadingSnackBar(
       child: SizedBox(
         height: MediaQuery.of(context).size.height * .3,
         child: ListView.builder(
-          itemCount: 15,
+          itemCount: 10,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return const Padding(

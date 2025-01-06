@@ -11,10 +11,10 @@ class NewestListViewBlocBuilder extends StatefulWidget {
 
   @override
   State<NewestListViewBlocBuilder> createState() =>
-      _FeatuedBooksListViewBlocBuilderState();
+      _NewestBooksListViewBlocBuilderState();
 }
 
-class _FeatuedBooksListViewBlocBuilderState
+class _NewestBooksListViewBlocBuilderState
     extends State<NewestListViewBlocBuilder> {
   List<BookEntity> books = [];
 

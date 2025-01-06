@@ -9,17 +9,22 @@ class SimilarListViewBlocBuilder extends StatefulWidget {
 
   @override
   State<SimilarListViewBlocBuilder> createState() =>
-      _FeatuedBooksListViewBlocBuilderState();
+      _SimilarBooksListViewBlocBuilderState();
 }
 
-class _FeatuedBooksListViewBlocBuilderState
+class _SimilarBooksListViewBlocBuilderState
     extends State<SimilarListViewBlocBuilder> {
+
   List<BookEntity> books = [];
+
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      context.read<SimilarBooksCubit>().fetchSimilarBooks();
+    });
     super.initState();
-    context.read<SimilarBooksCubit>().fetchSimilarBooks();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SimilarBooksCubit, SimilarBooksState>(
@@ -27,7 +32,6 @@ class _FeatuedBooksListViewBlocBuilderState
         if (state is SimilarBooksSuccess) {
           books.addAll(state.books);
         }
-
         if (state is SimilarBooksPaginationFailure) {}
       },
       builder: (context, state) {
